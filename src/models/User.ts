@@ -10,6 +10,7 @@ const userSchema = new Schema(
     position: String,
     role: { type: String, enum: ["admin", "member"], default: "member" },
     local: { type: String, enum: ["ios", "vtco", "ssa"] },
+    isActive: { type: Boolean, default: true },
   }
   // { timestamps: true }
 );
