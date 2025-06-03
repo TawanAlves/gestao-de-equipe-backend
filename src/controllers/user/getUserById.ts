@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { User } from "../../models/User";
+import { UserService } from "../../services/UserService/UserService";
 
 export const getUserById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const user = await User.findById(id);
+    const user = await UserService.getUserById(id);
     res.status(200).json(user);
   } catch (error) {
     console.error("Erro ao buscar usuário:", error);
