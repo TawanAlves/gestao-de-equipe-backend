@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { createUser } from "../controllers/createUserController";
-import { getAllUsers } from "../controllers/getAllUsersController";
-import { getUserById } from "../controllers/getUserByIdController";
-import { deleteUser } from "../controllers/deleteUserController";
-import { updateUser } from "../controllers/updateUserController";
+import { createUser } from "../controllers/user/createUser";
+import { getAllUsers } from "../controllers/user/getAllUsers";
+import { getUserById } from "../controllers/user/getUserById";
+import { deleteUser } from "../controllers/user/deleteUser";
+import { updateUser } from "../controllers/user/updateUser";
 const router = Router();
 
 router.post("/user", createUser);
