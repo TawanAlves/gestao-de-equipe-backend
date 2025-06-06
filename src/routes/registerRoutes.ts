@@ -4,11 +4,13 @@ import { getAlRegisters } from "../controllers/register/getAllRegisters";
 import { getRegisterById } from "../controllers/register/getRegisterById";
 import { deleteRegister } from "../controllers/register/deleteRegister";
 import { updateRegister } from "../controllers/register/updateRegister";
+import { adminMiddleware } from "../middlewares/adminMiddleware";
+
 const router = Router();
 
 router.post("/register", createRegister);
 
-router.get("/register", getAlRegisters);
+router.get("/register", adminMiddleware, getAlRegisters);
 
 router.get("/register/:id", getRegisterById);
 
