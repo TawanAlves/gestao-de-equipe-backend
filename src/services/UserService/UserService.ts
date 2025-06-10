@@ -6,18 +6,28 @@ export class UserService {
     name: string;
     email: string;
     password: string;
+    birthday: Date;
+    category: "s" | "p" | "o";
+    position: string;
+    role?: "admin" | "member";
+    local: "ios" | "vtco" | "ssa";
+    isActive?: boolean;
   }) {
     const existingUser = await User.findOne({ email: data.email });
     if (existingUser) {
       throw new Error("Email já existe");
     }
 
-    const hashedPassword = await bcrypt.hash(data.password, 10);
-
     const user = new User({
       name: data.name,
       email: data.email,
-      password: hashedPassword,
+      password: data.password,
+      birthday: data.birthday,
+      category: data.category,
+      position: data.position,
+      role: data.role ?? "member",
+      local: data.local,
+      isActive: data.isActive ?? true,
     });
     await user.save();
     const { password, ...userWithoutPassword } = user.toObject();
